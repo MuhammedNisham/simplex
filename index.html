@@ -6,40 +6,66 @@
     <title>Simplex</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="Static/CSS/style.css">
-    <link rel="shortcut icon" href="static/images/icons/SPX_LOGO.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="Static/Images/Icons/SPX_LOGO.ico" type="image/x-icon">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html" data-page="">
-      <img src="Static/Images/Icons/MAIN_LOGO.png" alt="Icon" width="110" height="30" class="d-inline-block align-text-top me-2">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" data-page="home">HOME</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SHOP</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">WINDOWS</a></li>
-             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">DOORS</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" data-page="contact">CONTACT</a>
-        </li>    
-      </ul>
-    </div>
-  </div>
-</nav>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" data-page="home">
+                    <img src="Static/Images/Icons/MAIN_LOGO.png" alt="Icon" width="110" height="30" class="d-inline-block align-text-top me-2">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="home">HOME</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                SHOP
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" data-page="windows">WINDOWS</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" data-page="doors">DOORS</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="contact">CONTACT</a>
+                        </li>    
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
-    <script src="static/js/script.js"></script>
+
+    <!-- Page Content Container -->
+    <main class="container mt-5">
+        <!-- Home Page -->
+        <div id="home" class="page-content active">
+            <!-- Content loads from Partials/home.html -->
+        </div>
+
+        <!-- Windows Page -->
+        <div id="windows" class="page-content">
+            <!-- Content loads from Partials/windows.html -->
+        </div>
+
+        <!-- Doors Page -->
+        <div id="doors" class="page-content">
+            <!-- Content loads from Partials/doors.html -->
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page-content">
+            <!-- Content loads from Partials/contact.html -->
+        </div>
+    </main>
+
+    <script src="Static/Js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

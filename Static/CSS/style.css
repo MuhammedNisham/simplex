@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
   
 }
 /* Page Content Styling */
@@ -53,4 +55,41 @@
 
 .page-content li {
     margin-bottom: 10px;
+}
+
+/* Navbar styling */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Move navbar items to the right */
+.navbar-collapse {
+    justify-content: center !important;
+    margin-right: 100px; /* Adjust this value to move items more or less to the right */
+}
+
+/* Alternative: If you want to move only the nav items */
+.navbar-nav {
+    margin-right: 50px; /* Adjust this value */
+}
+
+/* Carousel Styling */
+#carouselExampleFade {
+    max-width: 100%;
+    height: 450px; /* Adjust height as needed */
+    margin: 0 auto;
+}
+
+#carouselExampleFade .carousel-inner {
+    height: 450px; /* Same height as carousel */
+}
+
+#carouselExampleFade .carousel-item {
+    height: 450px; /* Same height as carousel */
+}
+
+#carouselExampleFade img {
+    height: 100%;
+    object-fit: cover; /* This makes the image fill the space without distortion */
+    width: 100%;
 }
