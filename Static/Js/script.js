@@ -71,3 +71,115 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// ==================== CAROUSEL CONTROL ====================
+class CarouselController {
+    constructor(carouselId, interval = 3000) {
+        this.carousel = document.getElementById(carouselId);
+        this.items = this.carousel.querySelectorAll('.carousel-item');
+        this.currentIndex = 0;
+        this.interval = interval;
+        this.autoplayTimer = null;
+        this.isTransitioning = false;
+        this.init();
+    }
+
+    init() {
+        this.setupEventListeners();
+        this.startAutoplay();
+    }
+
+    setupEventListeners() {
+        // Next button
+        const nextBtn = document.getElementById('nextBtn');
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => this.nextSlide());
+        }
+
+        // Previous button
+        const prevBtn = document.getElementById('prevBtn');
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => this.prevSlide());
+        }
+
+        // Pause on hover
+        this.carousel.addEventListener('mouseenter', () => this.stopAutoplay());
+        this.carousel.addEventListener('mouseleave', () => this.startAutoplay());
+    }
+
+    showSlide(index) {
+        if (this.isTransitioning) return;
+        
+        this.isTransitioning = true;
+
+        // Remove active class from all items
+        this.items.forEach(item => item.classList.remove('active'));
+
+        // Wrap index around
+        this.currentIndex = (index + this.items.length) % this.items.length;
+
+        // Add active class to current item
+        this.items[this.currentIndex].classList.add('active');
+
+        // Reset transition flag after animation completes
+        setTimeout(() => {
+            this.isTransitioning = false;
+        }, 600); // Match your CSS transition duration
+    }
+
+    nextSlide() {
+        this.showSlide(this.currentIndex + 1);
+        this.resetAutoplay();
+    }
+
+    prevSlide() {
+        this.showSlide(this.currentIndex - 1);
+        this.resetAutoplay();
+    }
+
+    startAutoplay() {
+        this.autoplayTimer = setInterval(() => {
+            this.showSlide(this.currentIndex + 1);
+        }, this.interval);
+    }
+
+    stopAutoplay() {
+        if (this.autoplayTimer) {
+            clearInterval(this.autoplayTimer);
+            this.autoplayTimer = null;
+        }
+    }
+
+    resetAutoplay() {
+        this.stopAutoplay();
+        this.startAutoplay();
+    }
+}
+
+// Initialize carousel when home page loads
+function initCarousel() {
+    const carousel = document.getElementById('carouselExampleFade');
+    if (carousel && !carousel.carouselController) {
+        carousel.carouselController = new CarouselController('carouselExampleFade', 3000);
+    }
+}
+
+// Modify the loadPageContent function to initialize carousel for home page
+const originalLoadPageContent = loadPageContent;
+loadPageContent = function(pageName, container) {
+    originalLoadPageContent(pageName, container);
+    
+    // Initialize carousel after home page content is loaded
+    if (pageName === 'home') {
+        setTimeout(() => {
+            initCarousel();
+        }, 100);
+    }
+};
+
+// Initialize carousel on page load
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        initCarousel();
+    }, 500);
+});

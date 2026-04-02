@@ -123,3 +123,8 @@
     width: 20px;
     height: 20px;
 }
+
+/* Soft Zoom & Fade Transition */
+.carousel-item {
+  transition: transform 2.5s ease-in-out, ;
+}
