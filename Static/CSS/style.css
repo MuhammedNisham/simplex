@@ -1,0 +1,56 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  
+}
+/* Page Content Styling */
+.page-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.page-content.active {
+    display: block;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Navbar styling */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Content container */
+.container {
+    max-width: 1200px;
+}
+
+/* Page heading styles */
+.page-content h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.page-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.page-content ul {
+    list-style-position: inside;
+    color: #666;
+}
+
+.page-content li {
+    margin-bottom: 10px;
+}
