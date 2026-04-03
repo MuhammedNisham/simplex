@@ -6,6 +6,10 @@
   font-family: 'Poppins', sans-serif;
   
 }
+/* Add this to your style.css if using fixed-top */
+body {
+    padding-top: 80px; /* Adjust this number based on your navbar's actual height */
+}
 /* Page Content Styling */
 .page-content {
     display: none;
