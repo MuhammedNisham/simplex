@@ -71,3 +71,71 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// 1. Store your product details here (Your "Database")
+const productDatabase = {
+    'ARCH WINDOW': { 
+        title: 'ARCH WINDOW', 
+        description: 'A monumental door structure forged for the harshest environments. Designed to stand resilient against severe weather while capturing the soft morning light.', 
+        image: 'Static/Images/highlightpro()/arch1.jpg', // Replace with your high-end renders
+        features: ['Heavy-duty commercial steel', 'Engineered for severe weather', 'Monumental architectural scaling']
+    },
+    'horizon': { 
+        title: 'Atmospheric Horizon Frame', 
+        description: 'Larger-than-life steel windows that transform ordinary views into sweeping, epic landscapes. Engineered for perfect natural light dispersion.', 
+        image: 'https://via.placeholder.com/800x600', 
+        features: ['Maximized volumetric light dispersion', 'Seamless landscape integration', 'Cinematic clarity']
+    },
+    'titan': { 
+        title: 'Titan Commercial Series', 
+        description: 'Heavy-duty transportable security. Inspired by commercial carry transit, these structures bring surreal strength to any natural or urban setting.', 
+        image: 'https://via.placeholder.com/800x600',
+        features: ['Transport-grade durability', 'Surreal industrial aesthetic', 'High-impact security locks']
+    },
+    'golden': { 
+        title: 'The Golden-Hour Series', 
+        description: 'Experience cinematic clarity. Our premium windows are crafted to maximize natural glow and dramatic lighting in your architectural space.', 
+        image: 'https://via.placeholder.com/800x600',
+        features: ['Optimized for golden-hour glow', 'Dramatic lighting enhancements', 'Premium steel framing']
+    }
+};
+
+// 2. The function to switch pages and load the specific product
+function viewProduct(productId) {
+    // Hide all existing pages
+    document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+    
+    // Show the product detail container
+    const detailPage = document.getElementById('product-detail');
+    detailPage.classList.add('active');
+    
+    // Load the HTML template
+    fetch('Partials/product-detail.html')
+        .then(response => response.text())
+        .then(html => {
+            // Put the template inside the container
+            detailPage.innerHTML = html;
+            
+            // Get the specific product data from our database above
+            const product = productDatabase[productId];
+            
+            if(product) {
+                // Inject the specific image, title, and description
+                document.getElementById('detail-image').src = product.image;
+                document.getElementById('detail-title').innerText = product.title;
+                document.getElementById('detail-description').innerText = product.description;
+                
+                // Inject the bullet points
+                const featuresList = document.getElementById('detail-features');
+                featuresList.innerHTML = ''; // Clear old ones
+                product.features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.innerText = feature;
+                    featuresList.appendChild(li);
+                });
+            }
+            
+            // Scroll to the top of the page smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+}

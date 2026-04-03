@@ -127,3 +127,39 @@ body {
     width: 20px;
     height: 20px;
 }
+
+/* Media Query for Tablets and Desktops */
+@media (min-width: 768px) {
+    #carouselExampleFade,
+    #carouselExampleFade .carousel-inner,
+    #carouselExampleFade .carousel-item {
+        height: 500px; /* Original taller height for larger screens */
+    }
+}
+
+/* --- Mobile Horizontal Swipe for Product Cards --- */
+@media (max-width: 767px) {
+    .mobile-swipe {
+        flex-wrap: nowrap; /* Stops cards from dropping to the next line */
+        overflow-x: auto;  /* Turns on horizontal scrolling */
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iPhones */
+        scroll-snap-type: x mandatory; /* Enables native-feeling snapping */
+        padding-bottom: 15px; /* Adds space so box-shadows don't get cut off */
+        
+        /* Hides the ugly scrollbar for a clean, premium look */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+    
+    .mobile-swipe::-webkit-scrollbar {
+        display: none; /* Chrome/Safari/Opera */
+    }
+
+    .mobile-swipe > div {
+        /* Forces exactly 2 cards to show on the screen (50% width) */
+        flex: 0 0 50%; 
+        max-width: 50%;
+        scroll-snap-align: start; /* Makes the card 'snap' into place perfectly */
+    }
+}
